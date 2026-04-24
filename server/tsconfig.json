@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "baseUrl": "..",
+    "paths": {
+      "@/*": ["frontend/*"],
+      "$/*": ["server/*"]
+    },
+    "plugins": [],
+    "lib": ["ES2023"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}

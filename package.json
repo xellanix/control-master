@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -c \"blue,green\" -n \"SERVER,FRONTEND\" \"bun run dev:server\" \"bun run dev:frontend\"",
+    "dev": "concurrently -c \"green,blue\" -n \"FRONTEND,SERVER\" \"bun run dev:frontend\" \"bun run dev:server\"",
     "dev:server": "bun --hot --define=VERSION:'\"0.0.0\"' run server/index.ts",
     "dev:frontend": "bunx --bun vite",
     "build": "bun run build:frontend && bun run build:server",
