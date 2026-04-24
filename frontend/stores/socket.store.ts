@@ -11,11 +11,13 @@ interface SocketActions {
     setSocket: (socket: Socket | null) => void;
     setSocketId: (socketId: string | null) => void;
     setDeviceName: (deviceName: string | null) => void;
+
+    emit: (event: string, ...args: unknown[]) => void;
 }
 
 type SocketStore = SocketState & SocketActions;
 
-export const useSocketStore = create<SocketStore>((set) => ({
+export const useSocketStore = create<SocketStore>((set, get) => ({
     socket: null,
     socketId: null,
     deviceName: null,
@@ -23,4 +25,6 @@ export const useSocketStore = create<SocketStore>((set) => ({
     setSocket: (socket) => set({ socket }),
     setSocketId: (socketId) => set({ socketId }),
     setDeviceName: (deviceName) => set({ deviceName }),
+
+    emit: (event, ...args) => get().socket?.emit(event, ...args),
 }));
