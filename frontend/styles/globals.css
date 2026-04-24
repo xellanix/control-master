@@ -111,7 +111,7 @@
     --info-foreground: color-mix(in oklch, #0f65af 100%, transparent);
     --info-border: color-mix(in oklch, #e2effc 100%, transparent);
 
-    --radius: 0.625rem;
+    --radius: 0.45rem;
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.148 0.004 228.8);
     --popover: oklch(1 0 0);
