@@ -6,7 +6,7 @@ export function SocketInitiator() {
     useEffect(() => {
         if (typeof window === "undefined") return;
 
-        const { setSocket, setSocketId, setDeviceName } = useSocketStore.getState();
+        const { setSocket, setSocketId } = useSocketStore.getState();
 
         const origin = window.location.origin;
         let socketUrl = origin;
@@ -31,7 +31,12 @@ export function SocketInitiator() {
             console.log("✅ Connected to server");
         });
 
-        newSocket.on("server:socket:device:name", setDeviceName);
+        newSocket.on("server:socket:device:info", (data) => {
+            useSocketStore.setState({
+                deviceName: data.name,
+                isLocal: data.isTrulyLocal,
+            });
+        });
 
         newSocket.on("connect_error", (err) => {
             console.error("Socket connection error:", err);

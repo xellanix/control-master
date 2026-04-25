@@ -28,6 +28,7 @@ serve({
     port: SERVER_PORT,
     routes: {
         "/": prod(index),
+        "/master": prod(index),
         "/index.html": prod(index),
     },
     async fetch(req, server) {
