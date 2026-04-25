@@ -1,6 +1,7 @@
 import { serve, file } from "bun";
 import { dirname, join } from "path";
-import { engine, SERVER_PORT } from "$/socket";
+import { engine, SERVER_PORT, FRONTEND_PORT } from "$/socket";
+import open from "open";
 
 import index from "../dist/frontend/index.html";
 
@@ -79,3 +80,8 @@ async function serveStaticFile(reqPath: string): Promise<Response> {
 console.log(`│ Server: http://localhost:${SERVER_PORT} │`);
 console.log(`│ Mode  : ${isProd ? "production " : "development"}            │`);
 console.log("└────────────────────────────────┘");
+
+if (process.env.ALREADY_OPENED !== "true") {
+    void open(`http://localhost:${isProd ? SERVER_PORT : FRONTEND_PORT}/master`);
+    process.env.ALREADY_OPENED = "true";
+}
